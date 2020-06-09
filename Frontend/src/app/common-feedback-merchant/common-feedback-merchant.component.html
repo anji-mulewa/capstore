@@ -1,0 +1,24 @@
+<h3 class="text-dark text-center">Customer Feedback</h3>
+<div class="col-md-5 mt-6 offset-md-3 mt-5">
+    <table class="table table-bordered table-hover">
+        <thead class="thead thead-light" style="background-color:dimgray;">
+            <tr>
+                <td>Feedback ID</td>
+                <td>Customer's Name</td>
+                <td>Customer's email-id</td>
+                <td>Rating</td>
+                <td>Feedback</td>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr *ngFor='let feedback of feedbackService.feedback'>
+                <td>{{feedback.messageId}}</td>
+                <td>{{feedback.name}}</td>
+                <td>{{feedback.email}}</td>
+                <td>{{feedback.rating}}</td>
+                <td>{{feedback.feedback}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

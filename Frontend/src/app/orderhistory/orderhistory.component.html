@@ -1,0 +1,73 @@
+<div class="container mt-4">
+    <table class="table table-bordered ">
+        <thead class="table table-dark">
+            <tr>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Pin-Code</th>
+                <th>Product Name</th>
+                <th>Product Id</th>
+                <th>Product Quantity</th>
+                <th>TotalBill</th>
+                <th>Feedback</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor='let historydetails1 of historydetails'>
+                <td>{{historydetails1.email}}</td>
+                <td>{{historydetails1.address}}</td>
+                <td>{{historydetails1.pincode}}</td>
+                <td>{{historydetails1.productName}}</td>
+                <td>{{historydetails1.productId}}</td>
+                <td>{{historydetails1.productQuantity}}</td>
+                <td>{{historydetails1.totalBill}}</td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                        data-target="#exampleModal" (click)="selectProduct(product)">
+                        Feedback
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Product Feedback</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        (click)="orderDetails()" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form #productFeedback="ngForm" (ngSubmit)="submitForm(productFeedback)">
+                                        <div class="form-group">
+                                            <label for="productId">Product ID</label>
+                                            <input type="number" name="productId" class="form-control"
+                                                #productId="ngModel" [(ngModel)]="selectedProduct.productId">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="rating">Rating:</label>
+                                            <input type="number" name="rating" class="form-control"
+                                                #rating="ngModel" ngModel>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="feedback">Feedback</label>
+                                            <input type="text" name="feedback" class="form-control" #feedback="ngModel"
+                                                ngModel>
+                                        </div>
+                                         <div class="btn btn-group float-right">
+                                            <button type="reset" class="btn btn-outlnie-dark">Reset</button>
+                                            <button type="submit" class="btn btn-outline-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
