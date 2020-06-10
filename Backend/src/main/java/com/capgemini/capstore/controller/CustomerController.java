@@ -37,21 +37,6 @@ public class CustomerController {
 		}
 		return response;
 	}
-
-	@GetMapping(path = "/getCommonFeedback")
-	public CapstoreResponse getCommonFeedback(@RequestParam String email) {
-		CapstoreResponse response = new CapstoreResponse();
-		List<CommonFeedbackBean> commonFeedbackList = customerService.getCommonFeedbackList(email);
-		if (commonFeedbackList != null && !commonFeedbackList.isEmpty()) {
-			response.setStatusCode(200);
-			response.setMessage("Success");
-			response.setDescription("Common feedback list displayed");
-			response.setCommonFeedbackList(commonFeedbackList);
-		} else {
-			throw new CapstoreException("The feedbacks can't be displayed");
-		}
-		return response;
-	}
 	
 	@PostMapping(path="/insertProductFeedback")
 	public CapstoreResponse insertProductFeedback(@RequestBody ProductFeedbackBean productFeedbackBean){

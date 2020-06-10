@@ -9,21 +9,16 @@ import com.capgemini.capstore.bean.CommonFeedbackBean;
 import com.capgemini.capstore.bean.OrderBean;
 import com.capgemini.capstore.bean.OrderHistoryBean;
 import com.capgemini.capstore.bean.ProductFeedbackBean;
-import com.capgemini.capstore.dao.CustomerOperationsDao;
+import com.capgemini.capstore.dao.CustomerDao;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
-	private CustomerOperationsDao customerOperationsDao;
+	private CustomerDao customerOperationsDao;
 
 	@Override
 	public boolean insertCommonFeedback(CommonFeedbackBean commonFeedbackBean) {
 		return customerOperationsDao.insertCommonFeedback(commonFeedbackBean);
-	}
-
-	@Override
-	public List<CommonFeedbackBean> getCommonFeedbackList(String email) {
-		return customerOperationsDao.getCommonFeedbackList(email);
 	}
 
 	@Override
