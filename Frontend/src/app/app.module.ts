@@ -5,17 +5,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
 import { CommonFeedbackCustomerComponent } from './common-feedback-customer/common-feedback-customer.component';
 import { CommonFeedbackMerchantComponent } from './common-feedback-merchant/common-feedback-merchant.component';
-import { ProductFeedbackComponent } from './product-feedback/product-feedback.component';
 import { OrderhistoryComponent } from './orderhistory/orderhistory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     CommonFeedbackCustomerComponent,
     CommonFeedbackMerchantComponent,
-    ProductFeedbackComponent,
     OrderhistoryComponent
   ],
   imports: [

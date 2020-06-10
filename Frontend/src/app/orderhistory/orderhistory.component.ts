@@ -39,16 +39,16 @@ export class OrderhistoryComponent implements OnInit {
 
   }
 
-  selectProduct(product) {
-    this.selectedProduct = product;
-    console.log(product);
+  selectProduct(historydetails1) {
+    this.selectedProduct = historydetails1;
+    console.log( this.selectedProduct);
   }
 
   submitForm(productFeedback: NgForm) {
     this.feedbackService.addProductFeedback(productFeedback.value).subscribe(res => {
       console.log(res);
     });
-  //  productFeedback.reset();
+    productFeedback.reset();
   }
 
   ngOnInit(): void {

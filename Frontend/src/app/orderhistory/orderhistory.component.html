@@ -26,7 +26,7 @@
                 <td>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                        data-target="#exampleModal" (click)="selectProduct(product)">
+                        data-target="#exampleModal" (click)="selectProduct(historydetails1)">
                         Feedback
                     </button>
                     <!-- Modal -->
@@ -37,7 +37,7 @@
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Product Feedback</h5>
                                     <button type="button" class="close" data-dismiss="modal"
-                                        (click)="orderDetails()" aria-label="Close">
+                                     aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -50,8 +50,19 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="rating">Rating:</label>
-                                            <input type="number" name="rating" class="form-control"
-                                                #rating="ngModel" ngModel>
+                                            <input type="text" name="rating" class="form-control"
+                                                #rating="ngModel" ngModel pattern="[1-5]{1}/?.[0-9]{1}">
+                                                <div *ngIf='rating.touched && rating.invalid'>
+                                                    <p class="alert alert-warning" *ngIf='rating.errors.required'>
+                                                        This field is mandatory
+                                                    </p>
+                                                    <p class="alert alert-warning" *ngIf='rating.errors.maxlength'>
+                                                        Maximum 1 digit only
+                                                    </p>
+                                                    <p class="alert alert-warning" *ngIf='rating.errors.pattern'>
+                                                        Invalid quantity!! It cannot be greater than 5 and can contain only digits.
+                                                    </p>
+                                                </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="feedback">Feedback</label>
@@ -60,7 +71,7 @@
                                         </div>
                                          <div class="btn btn-group float-right">
                                             <button type="reset" class="btn btn-outlnie-dark">Reset</button>
-                                            <button type="submit" class="btn btn-outline-primary">Submit</button>
+                                            <button type="submit" class="btn btn-outline-primary" [disabled]='productFeedback.invalid'>Submit</button>
                                         </div>
                                     </form>
                                 </div>
